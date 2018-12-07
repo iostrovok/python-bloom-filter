@@ -1,7 +1,9 @@
 from utils import bits, random_primes
+from storage import BloomStorage
+import time
 
 
-class BloomFilter(object):
+class BloomFilter(BloomStorage):
 
     _body = []
     _matrix_list = []
@@ -13,7 +15,11 @@ class BloomFilter(object):
     def __init__(self,
                  bits=None,  # bits per key
                  size=None,  # min size of filter
-                 count=None  # expected max count of keys
+                 count=None,  # expected max count of keys
+                 storage_key=None,  # expected max count of keys
+                 driver=driver,  # expected max count of keys
+                 storage_delay_duration=driver,  # expected max count of keys
+                 storage_delay_counter=driver  # expected max count of keys
                  ):
 
         self._body = []
@@ -65,7 +71,7 @@ class BloomFilter(object):
                 self._body[i] = 1
 
         if len(has_new) > 0:
-            self.store(has_new)
+            self.save_to_storage(has_new)
             return True
 
         return False

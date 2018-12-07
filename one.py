@@ -6,4 +6,5 @@ bfilter = BloomFilter()
 bfilter.add("213123213")
 
 
-print(bfilter.get("213123213"))
+print("213123213: ", bfilter.get("213123213"))
+print("53123213: ", bfilter.get("553123213"))
